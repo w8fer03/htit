@@ -1,0 +1,255 @@
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  min-height: 100%;
+  background: #ececec;
+}
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 70px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.1);
+  z-index: 1000; /* Ensures navbar stays on top */
+}
+nav .logo {
+  display: flex;
+  align-items: center;
+  margin: 0 24px;
+}
+.logo .menu-icon {
+  color: #333;
+  font-size: 40px;
+  margin-right: 14px;
+  cursor: pointer;
+}
+.logo .logo-name {
+  color: #333;
+  font-size: 22px;
+  font-weight: 500;
+}
+nav .sidebar {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100%;
+  width: 260px;
+  padding: 20px 0;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  z-index: 100; /* Adjust z-index as needed */
+}
+nav.open .sidebar {
+  left: 0;
+}
+.sidebar .sidebar-content {
+  display: flex;
+  height: 95%;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px 16px;
+}
+.sidebar-content .list {
+  list-style: none;
+}
+.list .nav-link {
+  display: flex;
+  align-items: center;
+  margin: 8px 0;
+  padding: 14px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+}
+.lists .nav-link:hover {
+  background-color: #0072b1;
+}
+.nav-link .icon {
+  margin-right: 14px;
+  font-size: 20px;
+  color: #707070;
+}
+.nav-link .link {
+  font-size: 16px;
+  color: #707070;
+  font-weight: 400;
+}
+.lists .nav-link:hover .icon,
+.lists .nav-link:hover .link {
+  color: #fff;
+}
+.overlay {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 1000vh;
+  width: 200%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s ease;
+  background: rgba(0, 0, 0, 0.3);
+}
+nav.open ~ .overlay {
+  opacity: 1;
+  left: 260px;
+  pointer-events: auto;
+}
+/* Shift content when sidebar is open */
+nav.open ~ .content,
+nav.open ~ .dashboard {
+  transform: translateX(260px); /* Matches sidebar width */
+  transition: transform 0.5s ease;
+}
+.content {
+  margin-top: 60px;
+  padding: 20px;
+  width: 100%;
+}
+h2 {
+  text-align: center;
+}
+.dashboard .dash-content {
+  padding-top: 80px;
+  padding-left: 35px;
+  padding-right: 20px;
+}
+.dash-content .title {
+  display: flex;
+  align-items: center;
+  margin: 30px 0 30px 0;
+}
+.dash-content .title i {
+  position: relative;
+  height: 35px;
+  width: 35px;
+  background-color: #0072b1;
+  border-radius: 6px;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+}
+.dash-content .title .text {
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--text-color);
+  margin-left: 10px;
+}
+.dash-content .boxes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dash-content .boxes .box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 12px;
+  width: calc(100% / 3 - 15px);
+  padding: 15px 20px;
+  background-color: #3b5998;
+}
+.boxes .box i {
+  font-size: 35px;
+  color: #fff;
+}
+.boxes .box .text {
+  white-space: nowrap;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+}
+.boxes .box p {
+  font-size: 40px;
+  font-weight: 500;
+  color: #fff;
+}
+.boxes .box.box2 {
+  background-color: #28a745;
+}
+.boxes .box.box3 {
+  background-color: #ffc107;
+}
+.dash-content .activity .activity-data {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  margin-bottom: 70px;
+}
+
+table th,
+table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+table th {
+  background-color: #0072b1;
+  color: white;
+}
+
+table tr:hover {
+  background-color: #f1f1f1;
+}
+.profile {
+  margin-left: auto; /* Pushes the profile section to the right */
+  display: flex; /* Use flexbox to align items */
+  align-items: center; /* Center items vertically */
+  padding: 0; /* Remove padding for alignment */
+  color: #333; /* Change color to match your theme */
+}
+
+.profile .icon {
+  font-size: 24px; /* Size of the profile icon */
+  margin-right: 8px; /* Space between the icon and username */
+}
+
+.username {
+  font-size: 18px; /* Adjust font size as needed */
+  font-weight: bold; /* Make the font bold */
+  margin-right: 10px;
+}
+footer {
+  text-align: center;
+  padding: 15px;
+  background-color: #f2f2f2;
+  font-size: 0.8rem;
+  color: #333;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+/* Media Query for Smaller Screens */
+@media (max-width: 768px) {
+  /* Adjust container width and padding */
+  .container {
+    width: 90%;
+    padding: 10px;
+  }
+
+  /* Adjust content area and table */
+  .content {
+    padding: 10px;
+  }
+
+  table {
+    width: 100%;
+    font-size: 0.8em;
+  }
+}

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #f0f0f0;
+        background-image: url("image/bg.jpg");
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+
+      .container {
+        display: flex;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        width: 90%; /* Adjust width for smaller screens */
+        max-width: 800px; /* Set a max-width for larger screens */
+        height: 500px;
+      }
+
+      .text-section {
+        background-color: #0072b1; /* TNB Blue */
+        color: white;
+        padding: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 50%;
+      }
+
+      .form-section {
+        padding: 60px;
+        width: 50%;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 30px;
+      }
+
+      label {
+        display: block;
+        margin: 20px 0 10px;
+      }
+
+      input[type="text"],
+      input[type="password"] {
+        width: 90%;
+        padding: 15px;
+        margin-bottom: 25px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      button {
+        background-color: #0072b1; /* TNB Blue */
+        color: white;
+        border: none;
+        padding: 15px;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      button:hover {
+        background-color: #005f8d; /* Darker shade for hover */
+      }
+
+      button:disabled {
+        background-color: #ccc;
+        cursor: not-allowed;
+      }
+
+      .forgot-password {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #0072b1;
+      }
+
+      .forgot-password:hover {
+        text-decoration: underline;
+      }
+
+      /* Media Queries for Smaller Screens */
+      @media (max-width: 768px) {
+        body {
+          height: 100%;
+          margin-top: 15vh;
+        }
+        .container {
+          flex-direction: column;
+          align-items: center;
+          justify-content: space-around;
+          padding: 8px; /* Reduce padding on smaller screens */
+        }
+
+        .text-section,
+        .form-section {
+          padding: 10px; /* Reduce padding on smaller screens */
+          width: 100%;
+        }
+
+        h1 {
+          font-size: 24px; /* Adjust heading size for smaller screens */
+        }
+
+        .form-section {
+          display: flex; /* Allow for vertical alignment within form */
+          flex-direction: column; /* Stack form elements vertically */
+          align-items: center; /* Center form elements horizontally */
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="text-section">
+        <h1>Hand Tools Inventory Tracking System</h1>
+      </div>
+      <div class="form-section">
+        <form action="login.php" method="post">
+          <h2>Log In</h2>
+          <label for="username">Username</label>
+          <input type="text" id="username" name="username" required />
+
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="userPassword"
+            placeholder="must be at least 6 characters"
+            required
+          />
+
+          <button type="submit" id="login-button" disabled>Login</button>
+          <a href="forgotPass.php" class="forgot-password">Forgot Password</a>
+        </form>
+      </div>
+    </div>
+
+    <script>
+      const passwordInput = document.getElementById("password");
+      const loginButton = document.getElementById("login-button");
+
+      //to check password length
+      function checkPasswordLength() {
+        if (passwordInput.value.length >= 6) {
+          loginButton.disabled = false;
+        } else {
+          loginButton.disabled = true;
+        }
+      }
+      passwordInput.addEventListener("input", checkPasswordLength);
+    </script>
+  </body>
+</html>
